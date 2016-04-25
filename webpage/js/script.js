@@ -1,10 +1,16 @@
-$(document).ready(function(){
+$(document).ready(function() {
+  var state = "AL";
+  var lc = false;
+  var rc = false;
+  var probability = false;
+  var interarrival = false;
+
   // update the graph
   $('#updateChange').click(function() {
-    var state = $('#stateChooser').val();
-    var lc = $('#showLC').is(":checked");
-    var rc = $('#showRC').is(":checked");
-    var probability = $('#showProbability').is(":checked");
-    var interarrival = $('#showInterarrival').is(":checked");
+    state = $('#stateChooser').val();
+    lc = $('#showLC').is(":checked");
+    rc = $('#showRC').is(":checked");
+    probability = $('#showProbability').is(":checked");
+    interarrival = $('#showInterarrival').is(":checked");
   });
 });
