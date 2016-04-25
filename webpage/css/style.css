@@ -1,0 +1,44 @@
+/*!
+ * Start Bootstrap - 3 Col Portfolio HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+.portfolio-item {
+    margin-bottom: 25px;
+}
+
+.portfolio-item h3 {
+  text-align: center;
+}
+
+footer {
+    margin: 50px 0;
+}
+
+.form-control {
+  margin-bottom: 15px;
+}
+
+.well {
+  margin-top: 20px;
+}
+
+.well p {
+  margin-bottom: 0;
+  font-size: small;
+}
+
+.jumbotron {
+  background-image: url("http://www.triomediagroup.com/wp-content/themes/trio-wrdprs-theme/img/psa-healthcare.jpg");
+  background-size: cover;
+  background-position: 8%;
+}
+
+.jumbotron h1 {
+  color: #0052cc;
+}
+
+.jumbotron h4 {
+  color:  #1a75ff;
+}

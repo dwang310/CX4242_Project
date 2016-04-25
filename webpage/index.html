@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CX 4242 Project: Childhood Asthma Data Mining</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Header -->
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="jumbotron">
+              <h1>Pediatric Asthma Patient Treatment Clustering</h1>
+              <h4>CX 4242 Spring 2016</h4>
+            </div>
+          </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Projects Row -->
+        <div class="row">
+          <!-- user preference -->
+          <div class="col-md-2 portfolio-item">
+            <h3>Graph Preference</h3>
+            <form>
+                <h5>Select a state</h5>
+                <select class="form-control" id="stateChooser">
+                  <!-- <option value='null'>- choose -</option> -->
+                  <option>AL</option>
+                  <option>AR</option>
+                  <option>MS</option>
+                  <option>LA</option>
+                  <option>TX</option>
+                  <option>CA</option>
+                  <option>GA</option>
+                  <option>NC</option>
+                  <option>SC</option>
+                  <option>NY</option>
+                  <option>PA</option>
+                  <option>FL</option>
+                  <option>TN</option>
+                  <option>MN</option>
+                </select>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" value="" id="showLC">
+                    Show LC
+                  </label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" value="" id="showRC">
+                    Show RC
+                  </label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" value="" id="showProbability">
+                    Show Probability
+                  </label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" value="" id="showInterarrival">
+                    Show Interarrival
+                  </label>
+                </div>
+                <button type="button" class="btn btn-primary center-block" id="updateChange">Submit</button>
+            </form>
+          </div>
+
+          <!-- d3 -->
+          <div class="col-md-8 portfolio-item">
+              <h3>Markov Chains</h3>
+          </div>
+
+          <!-- Legend -->
+          <div class="col-md-2 portfolio-item">
+              <h3>Legend</h3>
+              <div class="well">
+                <p>
+                  ER: Emergence Care<br>
+                  HO: Hospitalization<br>
+                  CL: Clinic<br>
+                  RX: Medication<br>
+                  PO: Primary Care<br>
+                  NP: Nurse Practice<br>
+                  LC: Start<br>
+                  RC: End
+                </p>
+              </div>
+          </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                  <p><a href="http://setosa.io/ev/markov-chains/">Learn about Markov Chains</a></p>
+                  <p>Copyright &copy; Asthma Patients Visualization, Georgia Institute of Technology</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
