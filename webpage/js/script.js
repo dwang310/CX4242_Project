@@ -1,53 +1,3 @@
-// var links = [
-//       {source: "Start", target: "Start", type: 1},
-//       {source: "Start", target: "RX", type: 0.45},
-//       {source: "Start", target: "PO", type: 0.54},
-//       {source: "Start", target: "End", type:0},
-//
-//        {source: "CL", target: "CL", type: 0.10251},
-//        {source: "CL", target: "RX", type: 0.096},
-//        {source: "CL", target: "PO", type: 0.145},
-//        {source: "CL", target: "End", type: 1.47},
-//        {source: "ER", target: "ER", type: 0.061},
-//        {source: "ER", target: "HO", type: 0.0030},
-//        {source: "ER", target: "RX", type: 0.071},
-//        {source: "ER", target: "PO", type: 0.055},
-//        {source: "ER", target: "End", type: 0.0917},
-//
-//        {source: "HO", target: "CL", type: 0.034},
-//        {source: "HO", target: "ER", type: 0.0945},
-//        {source: "HO", target: "HO", type: 0.039},
-//        {source: "HO", target: "RX", type: 0.0705},
-//        {source: "HO", target: "PO", type: 0.0852},
-//        {source: "HO", target: "End", type: 2.00},
-//
-//        {source: "RX", target: "CL", type: 0.0699},
-//        {source: "RX", target: "ER", type: 0.0955},
-//        {source: "RX", target: "HO", type: 0.0924},
-//        {source: "RX", target: "RX", type: 0.112},
-//        {source: "RX", target: "NP", type: 0.048},
-//        {source: "RX", target: "PO", type: 0.046},
-//        {source: "RX", target: "End", type: 1.50},
-//
-//        {source: "NP", target: "RX", type: 0.075},
-//        {source: "NP", target: "NP", type: 0.069},
-//        {source: "NP", target: "PO", type: 0.111},
-//        {source: "NP", target: "End", type: 0.5936},
-//
-//        {source: "PO", target: "CL", type: 0.101},
-//        {source: "PO", target: "ER", type: 0.177},
-//        {source: "PO", target: "HO", type: 0.111},
-//        {source: "PO", target: "RX", type: 0.082},
-//        {source: "PO", target: "NP", type: 0.124},
-//        {source: "PO", target: "PO", type: 0.816},
-//        {source: "PO", target: "End", type: 1.897},
-//
-//        {source: "End", target: "End", type: 1}
-// ];
-//
-//
-// var nodes = {};
-
 var nodes = [
   {id:"Start", size:12,"x": 100, "y":200},
   {id:"CL", size:12, "x": 200, "y":350},
@@ -59,7 +9,60 @@ var nodes = [
   {id:"End", size:12, "x": 500, "y":200},
 ]
 
-var links = [
+var links = []
+
+links[0] = [
+  {source: 0, target: 1, probability: "0",type:"none"},
+  {source: 0, target: 2, probability: "0",type:"none"},
+  {source: 0, target: 3, probability: "0",type:"low"},
+  {source: 0, target: 4, probability: "0.45458",type:"high"},
+  {source: 0, target: 5, probability: "0",type:"none"},
+  {source: 0, target: 6, probability: "0.54542",type:"high"},
+  {source: 1, target: 1, probability: "0.082469",type:"none"},
+  {source: 1, target: 2, probability: "0",type:"none"},
+  {source: 1, target: 3, probability: "0",type:"none"},
+  {source: 1, target: 4, probability: "0.69604",type:"high"},
+  {source: 1, target: 5, probability: "0",type:"none"},
+  {source: 1, target: 6, probability: "0.18426",type:"low"},
+  {source: 1, target: 7, probability: "0.037229",type:"none"},
+  {source: 2, target: 1, probability: "0",type:"none"},
+  {source: 2, target: 2, probability: "0.063137",type:"none"},
+  {source: 2, target: 3, probability: "0.14469",type:"none"},
+  {source: 2, target: 4, probability: "0.54094",type:"high"},
+  {source: 2, target: 5, probability: "0",type:"none"},
+  {source: 2, target: 6, probability: "0.21177",type:"medium"},
+  {source: 2, target: 7, probability: "0.039461",type:"none"},
+  {source: 3, target: 1, probability: "0.010023",type:"none"},
+  {source: 3, target: 2, probability: "0.022938",type:"none"},
+  {source: 3, target: 3, probability: "0.11392",type:"low"},
+  {source: 3, target: 4, probability: "0.66731",type:"high"},
+  {source: 3, target: 5, probability: "0",type:"none"},
+  {source: 3, target: 6, probability: "0.15825",type:"low"},
+  {source: 3, target: 7, probability: "0.027564",type:"none"},
+  {source: 4, target: 1, probability: "0.0059269",type:"none"},
+  {source: 4, target: 2, probability: "0.0083226",type:"none"},
+  {source: 4, target: 3, probability: "0.013577",type:"none"},
+  {source: 4, target: 4, probability: "0.79403",type:"high"},
+  {source: 4, target: 5, probability: "0.0029969",type:"none"},
+  {source: 4, target: 6, probability: "0.12126",type:"low"},
+  {source: 4, target: 7, probability: "0.048886",type:"none"},
+  {source: 5, target: 1, probability: "0",type:"none"},
+  {source: 5, target: 2, probability: "0",type:"none"},
+  {source: 5, target: 3, probability: "0",type:"none"},
+  {source: 5, target: 4, probability: "0.77183",type:"high"},
+  {source: 5, target: 5, probability: "0.08262",type:"none"},
+  {source: 5, target: 6, probability: "0.11045",type:"low"},
+  {source: 5, target: 7, probability: "0.035103",type:"none"},
+  {source: 6, target: 1, probability: "0.0083914",type:"none"},
+  {source: 6, target: 2, probability: "0.012915",type:"none"},
+  {source: 6, target: 3, probability: "0.016209",type:"none"},
+  {source: 6, target: 4, probability: "0.49088",type:"high"},
+  {source: 6, target: 5, probability: "0.0045399",type:"none"},
+  {source: 6, target: 6, probability: "0.31038",type:"high"},
+  {source: 6, target: 7, probability: "0.15668",type:"low"},
+];
+
+links[1] = [
   {source: 0, target: 1, probability: "0.072664",type:"none"},
   {source: 0, target: 2, probability: "0.12703",type:"low"},
   {source: 0, target: 3, probability: "0.10279",type:"low"},
@@ -110,13 +113,107 @@ var links = [
   {source: 6, target: 7, probability: "0.13046",type:"low"},
 ];
 
+links[2] = [
+  {source: 0, target: 1, probability: "0.023042",type:"none"},
+  {source: 0, target: 2, probability: "0.14815",type:"low"},
+  {source: 0, target: 3, probability: "0.21404",type:"medium"},
+  {source: 0, target: 4, probability: "0.29215",type:"high"},
+  {source: 0, target: 5, probability: "0",type:"none"},
+  {source: 0, target: 6, probability: "0.32262",type:"high"},
+  {source: 1, target: 1, probability: "0.18928",type:"high"},
+  {source: 1, target: 2, probability: "0",type:"none"},
+  {source: 1, target: 3, probability: "0",type:"none"},
+  {source: 1, target: 4, probability: "0.19305",type:"low"},
+  {source: 1, target: 5, probability: "0",type:"none"},
+  {source: 1, target: 6, probability: "0.31114",type:"high"},
+  {source: 1, target: 7, probability: "0.30653",type:"high"},
+  {source: 2, target: 1, probability: "0",type:"none"},
+  {source: 2, target: 2, probability: "0.23185",type:"medium"},
+  {source: 2, target: 3, probability: "0.17956",type:"low"},
+  {source: 2, target: 4, probability: "0.10011",type:"low"},
+  {source: 2, target: 5, probability: "0",type:"none"},
+  {source: 2, target: 6, probability: "0.14725",type:"low"},
+  {source: 2, target: 7, probability: "0.34123",type:"high"},
+  {source: 3, target: 1, probability: "0",type:"none"},
+  {source: 3, target: 2, probability: "0.11425",type:"low"},
+  {source: 3, target: 3, probability: "0.34169",type:"high"},
+  {source: 3, target: 4, probability: "0.11479",type:"low"},
+  {source: 3, target: 5, probability: "0",type:"none"},
+  {source: 3, target: 6, probability: "0.13195",type:"low"},
+  {source: 3, target: 7, probability: "0.29733",type:"high"},
+  {source: 4, target: 1, probability: "0.011853",type:"none"},
+  {source: 4, target: 2, probability: "0.030955",type:"none"},
+  {source: 4, target: 3, probability: "0.054269",type:"none"},
+  {source: 4, target: 4, probability: "0.61957",type:"high"},
+  {source: 4, target: 5, probability: "0.013816",type:"none"},
+  {source: 4, target: 6, probability: "0",type:"low"},
+  {source: 4, target: 7, probability: "0.26954",type:"medium"},
+  {source: 5, target: 1, probability: "0",type:"none"},
+  {source: 5, target: 2, probability: "0",type:"none"},
+  {source: 5, target: 3, probability: "0",type:"none"},
+  {source: 5, target: 4, probability: "0.14611",type:"low"},
+  {source: 5, target: 5, probability: "0.17667",type:"low"},
+  {source: 5, target: 6, probability: "0.17556",type:"low"},
+  {source: 5, target: 7, probability: "0.50167",type:"high"},
+  {source: 6, target: 1, probability: "0.032762",type:"none"},
+  {source: 6, target: 2, probability: "0.065986",type:"none"},
+  {source: 6, target: 3, probability: "0.0873",type:"none"},
+  {source: 6, target: 4, probability: "0.094392",type:"none"},
+  {source: 6, target: 5, probability: "0.03677",type:"none"},
+  {source: 6, target: 6, probability: "0.45489",type:"high"},
+  {source: 6, target: 7, probability: "0.22791",type:"medium"},
+];
 
-// Compute the distinct nodes from the links.
-links.forEach(function(link) {
-  link.source = nodes[link.source] || (nodes[link.source] = {name: link.source});
-  link.target = nodes[link.target] || (nodes[link.target] = {name: link.target});
-});
-
+links[3] = [
+  {source: 0, target: 1, probability: "0.073254",type:"none"},
+  {source: 0, target: 2, probability: "0.091762",type:"none"},
+  {source: 0, target: 3, probability: "0.092888",type:"none"},
+  {source: 0, target: 4, probability: "0.40248",type:"high"},
+  {source: 0, target: 5, probability: "0.074438",type:"none"},
+  {source: 0, target: 6, probability: "0.26518",type:"medium"},
+  {source: 1, target: 1, probability: "0.34197",type:"high"},
+  {source: 1, target: 2, probability: "0.065327",type:"none"},
+  {source: 1, target: 3, probability: "0081496",type:"none"},
+  {source: 1, target: 4, probability: "0.23111",type:"medium"},
+  {source: 1, target: 5, probability: "0.021815",type:"none"},
+  {source: 1, target: 6, probability: "0.14563",type:"low"},
+  {source: 1, target: 7, probability: "0.11263",type:"low"},
+  {source: 2, target: 1, probability: "0.047109",type:"none"},
+  {source: 2, target: 2, probability: "0.17275",type:"low"},
+  {source: 2, target: 3, probability: "0.17568",type:"low"},
+  {source: 2, target: 4, probability: "0.316",type:"high"},
+  {source: 2, target: 5, probability: "0.030459",type:"none"},
+  {source: 2, target: 6, probability: "0.16038",type:"low"},
+  {source: 2, target: 7, probability: "0.097627",type:"none"},
+  {source: 3, target: 1, probability: "0.048414",type:"none"},
+  {source: 3, target: 2, probability: "0.095686",type:"none"},
+  {source: 3, target: 3, probability: "0.21633",type:"medium"},
+  {source: 3, target: 4, probability: "0.37847",type:"high"},
+  {source: 3, target: 5, probability: "0.025553",type:"none"},
+  {source: 3, target: 6, probability: "0.16143",type:"low"},
+  {source: 3, target: 7, probability: "0.074115",type:"none"},
+  {source: 4, target: 1, probability: "0.018419",type:"none"},
+  {source: 4, target: 2, probability: "0.037512",type:"none"},
+  {source: 4, target: 3, probability: "0.043038",type:"none"},
+  {source: 4, target: 4, probability: "0.49171",type:"high"},
+  {source: 4, target: 5, probability: "0.032616",type:"none"},
+  {source: 4, target: 6, probability: "0.2973",type:"high"},
+  {source: 4, target: 7, probability: "0.079406",type:"low"},
+  {source: 5, target: 1, probability: "0.021764",type:"none"},
+  {source: 5, target: 2, probability: "0.048621",type:"none"},
+  {source: 5, target: 3, probability: "0.032612",type:"none"},
+  {source: 5, target: 4, probability: "0.37355",type:"high"},
+  {source: 5, target: 5, probability: "0.1884",type:"low"},
+  {source: 5, target: 6, probability: "0.1493",type:"low"},
+  {source: 5, target: 7, probability: "0.18575",type:"low"},
+  {source: 6, target: 1, probability: "0.02149",type:"none"},
+  {source: 6, target: 2, probability: "0.039297",type:"none"},
+  {source: 6, target: 3, probability: "0.037815",type:"none"},
+  {source: 6, target: 4, probability: "0.44201",type:"high"},
+  {source: 6, target: 5, probability: "0.017608",type:"none"},
+  {source: 6, target: 6, probability: "0.34371",type:"high"},
+  {source: 6, target: 7, probability: "0.098064",type:"low"},
+];
 
 
 // var width = 960,
@@ -348,34 +445,40 @@ function drawShit(temp_links, temp_nodes, haveLabel) {
 
 // jQuery stuff
 $(document).ready(function() {
-  var state = "AL";
+  var clusterNum = "AL";
   var lc = true;
   var rc = true;
   var probability = false;
   var interarrival = false;
   var current_nodes = d3.values(nodes);
-  var current_links = links;
-  drawShit(current_links, current_nodes, probability);
+  var current_all_links = links[0];
+  var current_links = []
+
+  drawShit(current_all_links, current_nodes, probability);
+
+  $('#stateChooser').change( function() {
+    clusterNum = $('#stateChooser').val();
+    current_all_links = links[clusterNum - 1];
+  });
 
   // update the graph
   $('#updateChange').click(function() {
-    state = $('#stateChooser').val();
     lc = $('#showLC').is(":checked");
     rc = $('#showRC').is(":checked");
     probability = $('#showProbability').is(":checked");
 
     if (lc && rc) {
-      current_links = links;
+      current_links = current_all_links;
       current_nodes = d3.values(nodes);
     } else if (lc) { // no rc
-      current_links = links.filter(function(d) {
+      current_links = current_all_links.filter(function(d) {
           return d.target.id !== "End";
       });
       current_nodes = d3.values(nodes).filter(function(d) {
           return d.id !== "End";
       });
     } else if (rc) { // no lc
-      current_links = links.filter(function(d) {
+      current_links = current_all_links.filter(function(d) {
         // debugger;
           return d.source.id !== "Start";
       });
@@ -383,7 +486,7 @@ $(document).ready(function() {
           return d.id !== "Start";
       });
     } else { // no both
-      current_links = current_links
+      current_links = current_all_links
                       .filter(function(d) {
                           return d.source.id !== "Start";
                       }).filter(function(d) {
