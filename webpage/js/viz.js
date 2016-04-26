@@ -58,7 +58,7 @@ links.forEach(function(link) {
 // var width = 960,
 //     height = 500;
 // var height = document.getElementById('markovChains').clientHeight;
-var width = document.getElementById('markovChains').clientWidth;
+var width = $('#markovChains').width();
 var height = 500;
 
 console.log(height + " " + width);
@@ -101,21 +101,7 @@ var path = svg.append("svg:g").selectAll("path")
       .attr("id",function(d,i) { return "linkId_" + i; });
 
 
-var linktext = svg.append("svg:g").selectAll("g.linklabelholder").data(force.links());
-
-linktext.enter().append("g").attr("class", "linklabelholder")
- .append("text")
- .attr("class", "linklabel")
-   .style("font-size", "13px")
- .attr("x", "90")
-   .attr("y", "-20")
- .attr("text-anchor", "start")
-     .style("fill","#000")
-   .append("textPath")
-.attr("xlink:href",function(d,i) { return "#linkId_" + i;})
- .text(function(d) {
-   return d.type;
-   });
+generateProb();
 
 var div = d3.select("body").append("div")
     .attr("class", "tooltip")
@@ -186,4 +172,22 @@ function linkArc(d) {
 
 function transform(d) {
   return "translate(" + d.x + "," + d.y + ")";
+}
+
+function generateProb() {
+  var linktext = svg.append("svg:g").selectAll("g.linklabelholder").data(force.links());
+
+  linktext.enter().append("g").attr("class", "linklabelholder")
+   .append("text")
+   .attr("class", "linklabel")
+     .style("font-size", "13px")
+   .attr("x", "90")
+     .attr("y", "-20")
+   .attr("text-anchor", "start")
+       .style("fill","#000")
+     .append("textPath")
+  .attr("xlink:href",function(d,i) { return "#linkId_" + i;})
+   .text(function(d) {
+     return d.type;
+     });
 }
