@@ -45,6 +45,7 @@ var links = [
        {source: "End", target: "End", type: 1}
 ];
 
+
 var nodes = {};
 
 // Compute the distinct nodes from the links.
@@ -58,143 +59,139 @@ links.forEach(function(link) {
 // var width = 960,
 //     height = 500;
 // var height = document.getElementById('markovChains').clientHeight;
-var width = document.getElementById('markovChains').clientWidth;
+var width = $('#markovChains').width();
 var height = 500;
 
-console.log(height + " " + width);
+function drawShit(temp_links, temp_nodes, haveLabel) {
+  var svg = d3.select("#markovChains").append("svg")
+      .attr("width", width)
+      .attr("height", height);
 
-var force = d3.layout.force()
-    .nodes(d3.values(nodes))
-    .links(links)
-    .size([width, height])
-    .linkDistance(250)
-    .charge(-250)
-    .on("tick", tick)
-    .start();
+  var force = d3.layout.force()
+      .nodes(temp_nodes)
+      .links(temp_links)
+      .size([width, height])
+      .linkDistance(250)
+      .charge(-250)
+      .on("tick", tick)
+      .start();
 
-var drag = force.drag()
+  var drag = force.drag()
 
-
-var svg = d3.select("#markovChains").append("svg")
-    .attr("width", width)
-    .attr("height", height);
-
-// Per-type markers, as they don't inherit styles.
-svg.append("defs").selectAll("marker")
-    .data(force.nodes())
-  .enter().append("marker")
-    .attr("id", function(d) { return d; })
-    .attr("viewBox", "0 -5 10 10")
-    .attr("refX", 15)
-    .attr("refY", -1.5)
-    .attr("markerWidth", 6)
-    .attr("markerHeight", 6)
-    .attr("orient", "auto")
-  .append("path")
-    .attr("d", "M0,-5L10,0L0,5");
+  // Per-type markers, as they don't inherit styles.
+  svg.append("defs").selectAll("marker")
+      .data(force.nodes())
+    .enter().append("marker")
+      .attr("id", function(d) { return d; })
+      .attr("viewBox", "0 -5 10 10")
+      .attr("refX", 15)
+      .attr("refY", -1.5)
+      .attr("markerWidth", 6)
+      .attr("markerHeight", 6)
+      .attr("orient", "auto")
+    .append("path")
+      .attr("d", "M0,-5L10,0L0,5");
 
 
-var path = svg.append("svg:g").selectAll("path")
-    .data(force.links())
-  .enter().append("svg:path")
-    .attr("class", function(d) { return "link " + d.type; })
-      .attr("id",function(d,i) { return "linkId_" + i; });
+  var path = svg.append("svg:g").selectAll("path")
+      .data(force.links())
+    .enter().append("svg:path")
+      .attr("class", function(d) { return "link " + d.type; })
+        .attr("id",function(d,i) { return "linkId_" + i; });
 
+  if (haveLabel) {
+      generateProb();
+  }
 
-// generateProb();
+  var div = d3.select("body").append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0);
 
-var div = d3.select("body").append("div")
-    .attr("class", "tooltip")
-    .style("opacity", 0);
+  var circle = svg.append("g").selectAll("circle")
+      .data(force.nodes())
+    .enter().append("circle")
+      .attr("r", 16)
+      .style("fill", colorfixed)
+      .on("dblclick", dblclick)
 
-var circle = svg.append("g").selectAll("circle")
-    .data(force.nodes())
-  .enter().append("circle")
-    .attr("r", 16)
-    .style("fill", colorfixed)
-    .on("dblclick", dblclick)
+      //.on('dblclick', circle.style('fill',function(d){return red}))
+      .call(drag);
+  var text = svg.append("svg:g").selectAll("g")
+      .data(force.nodes())
+    .enter().append("svg:g");
 
-    //.on('dblclick', circle.style('fill',function(d){return red}))
-    .call(drag);
-var text = svg.append("svg:g").selectAll("g")
-    .data(force.nodes())
-  .enter().append("svg:g");
-
-text.append("svg:text")
-    .attr("x", "-1em")
-    .attr("y", ".31em")
-       .style("font-size", "9px")
-    .text(function(d) { return d.name; });
-// Use elliptical arc path segments to doubly-encode directionality.
-function tick() {
-  path.attr("d", linkArc);
-  circle.attr("transform", transform);
-  text.attr('transform', transform);
-  path.on("mouseover", function(d) {
-        div.transition()
-            .duration(200)
-            .style("opacity", .9);
-        div .html(d.source.name + "<br/>"  + d.target.name)
-            .style("left", (d3.event.pageX) + "px")
-            .style("top", (d3.event.pageY - 28) + "px");
-            })
-      .on("mouseout", function(d) {
+  text.append("svg:text")
+      .attr("x", "-1em")
+      .attr("y", ".31em")
+         .style("font-size", "9px")
+      .text(function(d) { return d.name; });
+  // Use elliptical arc path segments to doubly-encode directionality.
+  function tick() {
+    path.attr("d", linkArc);
+    circle.attr("transform", transform);
+    text.attr('transform', transform);
+    path.on("mouseover", function(d) {
           div.transition()
-              .duration(500)
-              .style("opacity", 0);
-      });
+              .duration(200)
+              .style("opacity", .9);
+          div .html(d.source.name + "<br/>"  + d.target.name)
+              .style("left", (d3.event.pageX) + "px")
+              .style("top", (d3.event.pageY - 28) + "px");
+              })
+        .on("mouseout", function(d) {
+            div.transition()
+                .duration(500)
+                .style("opacity", 0);
+        });
+  }
+
+  function dblclick(d) {
+      if (d.fixed==true){
+          d3.select(this)
+              .classed("fixed", d.fixed = false)
+              .style('fill','yellow');
+      }
+      else {
+          d3.select(this)
+              .classed("fixed", d.fixed = true)
+              .style('fill', 'red');}
+
+  }
+  function colorfixed(d) {
+      if (d.fixed==true){
+          return 'red';}
+      else {
+          return 'yellow';}
+  }
+  function linkArc(d) {
+    var dx = d.target.x - d.source.x,
+        dy = d.target.y - d.source.y,
+        dr = Math.sqrt(dx * dx + dy * dy);
+    return "M" + d.source.x + "," + d.source.y + "A" + dr + "," + dr + " 0 0,1 " + d.target.x + "," + d.target.y;
+  }
+
+  function transform(d) {
+    return "translate(" + d.x + "," + d.y + ")";
+  }
+
+  function generateProb() {
+    var linktext = svg.append("svg:g").selectAll("g.linklabelholder").data(force.links());
+
+    linktext.enter().append("g").attr("class", "linklabelholder")
+     .append("text")
+     .attr("class", "linklabel")
+       .style("font-size", "13px")
+     .attr("x", "90")
+       .attr("y", "-20")
+     .attr("text-anchor", "start")
+         .style("fill","#000")
+       .append("textPath")
+    .attr("xlink:href",function(d,i) { return "#linkId_" + i;})
+     .text(function(d) {
+       return d.type;
+       });
+  }
 }
-
-function dblclick(d) {
-    if (d.fixed==true){
-        d3.select(this)
-            .classed("fixed", d.fixed = false)
-            .style('fill','yellow');
-    }
-    else {
-        d3.select(this)
-            .classed("fixed", d.fixed = true)
-            .style('fill', 'red');}
-
-}
-function colorfixed(d) {
-    if (d.fixed==true){
-        return 'red';}
-    else {
-        return 'yellow';}
-}
-function linkArc(d) {
-  var dx = d.target.x - d.source.x,
-      dy = d.target.y - d.source.y,
-      dr = Math.sqrt(dx * dx + dy * dy);
-  return "M" + d.source.x + "," + d.source.y + "A" + dr + "," + dr + " 0 0,1 " + d.target.x + "," + d.target.y;
-}
-
-function transform(d) {
-  return "translate(" + d.x + "," + d.y + ")";
-}
-
-function generateProb() {
-  var linktext = svg.append("svg:g").selectAll("g.linklabelholder").data(force.links());
-
-  linktext.enter().append("g").attr("class", "linklabelholder")
-   .append("text")
-   .attr("class", "linklabel")
-     .style("font-size", "13px")
-   .attr("x", "90")
-     .attr("y", "-20")
-   .attr("text-anchor", "start")
-       .style("fill","#000")
-     .append("textPath")
-  .attr("xlink:href",function(d,i) { return "#linkId_" + i;})
-   .text(function(d) {
-     return d.type;
-     });
-}
-
-
-
-
 
 
 // jQuery stuff
@@ -204,6 +201,9 @@ $(document).ready(function() {
   var rc = true;
   var probability = false;
   var interarrival = false;
+  var current_nodes = d3.values(nodes);
+  var current_links = links;
+  drawShit(current_links, current_nodes, probability);
 
   // update the graph
   $('#updateChange').click(function() {
@@ -211,26 +211,45 @@ $(document).ready(function() {
     lc = $('#showLC').is(":checked");
     rc = $('#showRC').is(":checked");
     probability = $('#showProbability').is(":checked");
-    interarrival = $('#showInterarrival').is(":checked");
 
-    if (lc) {
-      force.nodes().filter(function(d) {
-        return d.name == 'start';
-      }).style("visibility", "visible");
-    } else {
-      force.nodes().filter(function(d) {
-        return d.name == 'start';
-      }).style("visibility", "hidden");
-    }
-
-    if (rc) {
-    } else {
+    if (lc && rc) {
+      current_links = links;
+      current_nodes = d3.values(nodes);
+    } else if (lc) { // no rc
+      current_links = links.filter(function(d) {
+          return d.target.name !== "End";
+      });
+      current_nodes = d3.values(nodes).filter(function(d) {
+          return d.name !== "End";
+      });
+    } else if (rc) { // no lc
+      current_links = links.filter(function(d) {
+          return d.source.name !== "Start";
+      });
+      current_nodes = d3.values(nodes).filter(function(d) {
+          return d.name !== "Start";
+      });
+    } else { // no both
+      current_links = current_links
+                      .filter(function(d) {
+                          return d.source.name !== "Start";
+                      }).filter(function(d) {
+                          return d.target.name !== "End";
+                      });
+      current_nodes = d3.values(nodes)
+                      .filter(function(d) {
+                          return d.name !== "Start";
+                      }).filter(function(d) {
+                          return d.name !== "End";
+                      });
     }
 
     if (probability) {
-      generateProb();
+      document.getElementById('markovChains').innerHTML = '';
+      drawShit(current_links, current_nodes, true);
     } else {
-      $('.linklabel').html('');
+      document.getElementById('markovChains').innerHTML = '';
+      drawShit(current_links, current_nodes, false);
     }
 
   });
