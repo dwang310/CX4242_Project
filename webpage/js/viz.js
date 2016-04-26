@@ -67,8 +67,8 @@ var force = d3.layout.force()
     .nodes(d3.values(nodes))
     .links(links)
     .size([width, height])
-    .linkDistance(200)
-    .charge(-200)
+    .linkDistance(250)
+    .charge(-250)
     .on("tick", tick)
     .start();
 
@@ -117,7 +117,7 @@ linktext.enter().append("g").attr("class", "linklabelholder")
    return d.type;
    });
 
-var div = d3.select("#markovChains").append("div")
+var div = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
@@ -137,7 +137,7 @@ var text = svg.append("svg:g").selectAll("g")
 text.append("svg:text")
     .attr("x", "-1em")
     .attr("y", ".31em")
-       .style("font-size", "13px")
+       .style("font-size", "9px")
     .text(function(d) { return d.name; });
 // Use elliptical arc path segments to doubly-encode directionality.
 function tick() {
@@ -152,6 +152,11 @@ function tick() {
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY - 28) + "px");
             })
+      .on("mouseout", function(d) {
+          div.transition()
+              .duration(500)
+              .style("opacity", 0);
+      });
 }
 
 function dblclick(d) {
