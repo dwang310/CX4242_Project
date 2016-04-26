@@ -1,25 +1,28 @@
 /*for d3*/
- path.link {
-   fill: none;
-   stroke: #666;
-   stroke-width: 1.5px;
- }
+.link {
+ stroke: none;
+ fill: none;
+ stroke-width: 3px;
+}
 
- marker#licensing {
-   fill: green;
- }
+.link.low {
+ stroke-dasharray: 3,3;
+ stroke:#aea9a8;
+}
 
- div.tooltip {
-    position: absolute;
-    text-align: center;
-    width: 60px;
-    height: 28px;
-    padding: 2px;
-    font: 12px sans-serif;
-    background: lightsteelblue;
-    border: 0px;
-    border-radius: 8px;
-    pointer-events: none;
+.link.medium {
+ stroke:#aea9a8;
+}
+
+.link.high {
+ stroke: #0f0502;
+}
+
+.node circle {
+ cursor: move;
+ fill: #ccc;
+ stroke: #333;
+ stroke-width: 1.5px;
 }
 
 /*regular stuff*/
