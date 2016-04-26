@@ -23,6 +23,11 @@
 }
 
 /*regular stuff*/
+body {
+  /*background-image: url("http://api.ning.com/files/YhwQqZhqiBZ5yA*wlasIFVr-gD6eBNr9JZmI4IalQqo6ODjge3cY7*TFSEQGYzlXJ0OP*mo3Xco2hLSSSCr7Ti*bJ2TEc*qG/rough_canvasrepeating_background.jpg");
+  background-repeat: repeat;*/
+}
+
 .portfolio-item {
     margin-bottom: 25px;
 }
@@ -32,7 +37,7 @@
 }
 
 footer {
-    margin: 50px 0;
+  margin: 50px 0;
 }
 
 .form-control {
@@ -48,16 +53,16 @@ footer {
   font-size: small;
 }
 
-.jumbotron {
-  background-image: url("http://www.triomediagroup.com/wp-content/themes/trio-wrdprs-theme/img/psa-healthcare.jpg");
+/*.jumbotron {
+  background-image: url("http://assets.picography.co/wp-content/uploads/2015/04/top-of-the-world.jpg");
   background-size: cover;
-  background-position: 8%;
-}
+  background-position: center;
+}*/
 
-.jumbotron h1 {
+/*.jumbotron h1 {
   color: #0052cc;
-}
+}*/
 
 .jumbotron h4 {
-  color:  #1a75ff;
+  color:  gray;
 }
