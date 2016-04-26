@@ -12,5 +12,6 @@ $(document).ready(function() {
     rc = $('#showRC').is(":checked");
     probability = $('#showProbability').is(":checked");
     interarrival = $('#showInterarrival').is(":checked");
+    console.log("wtf");
   });
 });
